@@ -6,6 +6,8 @@ Consulting Portfolio Coach helps you keep track of leads, follow up with people,
 
 It works with **Codex or Claude Code**. You bring your own AI account. There is no separate coaching app or subscription from this project.
 
+> **Your notes live on your computer, under your control.** Your goals, leads and check-in history are saved as readable files in a private folder you choose, not in a database hosted by this project. You can inspect, edit, back up or delete them yourself. This project runs no server that collects your coaching data. Local storage does not mean offline processing: when Codex or Claude reads your notes, content may be sent to and retained by your AI provider according to your account's settings and policies. A folder synced to a cloud backup service may also have copies elsewhere.
+
 ## What it can help with
 
 - Set an income goal alongside a realistic weekly time budget.
