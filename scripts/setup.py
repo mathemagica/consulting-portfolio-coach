@@ -5,8 +5,8 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skills" / "independent-work-coach"
-NAME = "independent-work-coach"
+SKILL = ROOT / "skills" / "consulting-portfolio-coach"
+NAME = "consulting-portfolio-coach"
 
 
 def inside_git(path):

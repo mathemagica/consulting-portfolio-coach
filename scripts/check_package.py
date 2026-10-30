@@ -7,10 +7,10 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def check():
-    folder = ROOT / "skills" / "independent-work-coach"
+    folder = ROOT / "skills" / "consulting-portfolio-coach"
     skill = (folder / "SKILL.md").read_text(encoding="utf-8")
     front = skill.split("---", 2)[1]
-    assert "name: independent-work-coach" in front
+    assert "name: consulting-portfolio-coach" in front
     assert "description:" in front
     for match in re.findall(r"`((?:references|templates)/[^`]+)`", skill):
         assert (folder / match).exists(), match

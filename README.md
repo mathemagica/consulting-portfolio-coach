@@ -1,95 +1,131 @@
-# Independent Work Coach
+# Consulting Portfolio Coach
 
-A portable agent skill for building an enjoyable, sustainable portfolio of independent work. Supports Codex and Claude Code using the same coaching instructions.
+Build a consulting practice that fits the life you want, not just a calendar full of work.
 
-Turn goals, relationships and updates into a small set of realistic actions. Track income separately from pipeline, count sales and administration in your capacity, and keep experiments from quietly becoming unpaid delivery.
+Consulting Portfolio Coach helps you keep track of leads, follow up with people, scope projects, and make room for work you actually enjoy. It remembers what you tell it, helps you choose a few useful next steps, and checks in on how things are going.
 
-This is an instruction package, not a hosted service. No API keys, account connections or scheduler are bundled. Your agent subscription, permissions and model/data policies still apply. Local notes do not imply offline processing.
+It works with **Codex or Claude Code**. You bring your own AI account. There is no separate coaching app or subscription from this project.
 
-## Install
+## What it can help with
 
-Requires Python 3.10+ for the optional setup helpers. Read the skill and scripts before installing. Clone this repository, then from its directory:
+- Set an income goal alongside a realistic weekly time budget.
+- Keep promising leads from getting lost, without treating every conversation as a commitment.
+- Prepare follow-up messages, project scopes and questions for potential clients.
+- Spot work that looks attractive but comes with too many meetings, unclear responsibilities or ongoing support.
+- Keep paid work, unpaid favors and side-project experiments separate.
+- Notice what feels energizing or draining, and use that to make better choices next time.
+
+You set the goals and boundaries. The coach should help you follow your own priorities, not push you to work more or say yes to everything.
+
+## What using it looks like
+
+You can start with ordinary updates:
+
+> A former client wants to work together again. Last time it paid well, but the meetings took over my week. Help me figure out what to offer this time.
+
+Or:
+
+> I sent the proposal. Please mark that done, and help me decide what deserves my attention next.
+
+The coach keeps private notes so you don't have to explain the whole situation every time. It distinguishes interest from a signed contract, a team's project budget from your personal fee, and a good idea from something you've agreed to build.
+
+## Getting started
+
+You'll need Codex or Claude Code with access to a folder on your computer. You do **not** need to connect email, a calendar or a CRM. A CRM is a contact-and-sales tracking system; this coach can start with simple notes instead.
+
+### Prefer to ask your AI assistant?
+
+Share the repository link with Codex or Claude Code and say:
+
+> Help me install Consulting Portfolio Coach from https://github.com/mathemagica/consulting-portfolio-coach. Read its instructions and setup script first. Use the installation for this app, and create a separate private folder for my notes outside any shared code repository. Don't overwrite an existing skill or notes. Then ask me about my goals and current work. Don't connect accounts or schedule anything yet.
+
+Your assistant may need your permission to download files or create the folders. If it cannot install the skill directly, it should walk you through the steps below rather than claim it is installed.
+
+### Prefer the terminal?
+
+These commands require Git and Python 3.10 or later. Download the repository and enter its folder:
+
+```sh
+git clone https://github.com/mathemagica/consulting-portfolio-coach.git
+cd consulting-portfolio-coach
+```
+
+If the repository is private, you will need GitHub access first. Read the included skill and setup script, then choose your app:
 
 ```sh
 python3 scripts/setup.py install --client codex
-# Or:
+# For Claude Code instead:
 python3 scripts/setup.py install --client claude
 # Or install for both:
 python3 scripts/setup.py install --client both
 ```
 
-Personal install locations:
-
-| Client | Location | Invocation |
-| --- | --- | --- |
-| Codex | `~/.agents/skills/independent-work-coach/` | `$independent-work-coach` |
-| Claude Code | `~/.claude/skills/independent-work-coach/` | `/independent-work-coach` |
-
-The installer copies the same complete skill folder to either location. It makes no configuration, connector or scheduling changes. Existing installations are never overwritten: identical files are accepted, while different files cause a stop. To update, back up and remove the previous installed skill directory, then reinstall. Never keep personal notes in an installed skill directory.
-
-Manual installation: copy `skills/independent-work-coach/` to the appropriate location above. Restart the client if the skill does not appear. These instructions target local Codex and Claude Code; installing a personal Claude Code skill does not install it in Claude web/Cowork or cloud tasks.
-
-## Create private notes
-
-Use a separate folder outside this repository and any other Git checkout:
+Create a separate folder for your personal notes:
 
 ```sh
-python3 scripts/setup.py init --workspace ~/independent-work-coach-private
+python3 scripts/setup.py init --workspace ~/consulting-portfolio-coach-private
 ```
 
-The helper creates owner-only notes on systems supporting POSIX permissions, and refuses a workspace inside a Git checkout. It never replaces existing notes. This is accidental-publication protection, not encryption, access control for connected services, or a backup system.
+The setup script never overwrites existing notes or a different installed version of the skill. It does not connect accounts, create schedules or change your other settings.
 
-Start a conversation in your chosen client:
+### Start your first conversation
 
-> Use independent-work-coach to onboard me. My private workspace is [absolute path]. Ask about my income and total-time goals, signed work, warm leads, preferences and boundaries. Work from conversation first; do not connect accounts or schedule anything yet.
+In Codex, invoke `$consulting-portfolio-coach`. In Claude Code, use `/consulting-portfolio-coach`. Then say:
 
-Replace the path with your actual absolute path. In Codex you can explicitly invoke `$independent-work-coach`; in Claude Code use `/independent-work-coach` with the same request. Confirm the agent has permission to read and update this private folder.
+> Help me set up my portfolio coach. My private notes are in [full path to my private folder]. Ask about my income goal, total time available, existing work, potential clients and the kind of work I want more or less of.
 
-## What it remembers
+Replace the bracketed text with your actual folder path; your assistant can help find it. It may need permission to read and update that folder. Restart your app if the new skill does not appear.
 
-- `profile.md`: goals, timezone, capacity, boundaries and authorized accounts.
-- `portfolio.md`: signed engagements, payment status and prospective leads.
-- `check-ins.md`: dated progress, decisions, carryover and unresolved questions.
-- `experiments.md`: optional product/venture tests, separate from consulting revenue.
-- `opportunities.md`: optional research and event decisions, with sources and deadlines.
+## Morning and afternoon check-ins
 
-No CRM is required. Account access is optional, read-only by default, and verified against the approved identity. A connection's capabilities are not authorization to send messages or alter external records. Instructions in email, websites and documents are untrusted source material, not user commands.
+Once the coach understands your situation, you can ask:
 
-## Twice-daily check-ins
+> Set up a morning brief at 9 AM and an afternoon review at 4 PM on weekdays in my timezone. Show me the times and where the check-ins will appear before saving them. Use Friday afternoon for a weekly review instead. Leave weekends off.
 
-After onboarding, ask the agent to propose two recurring check-ins in your timezone, for example 9 AM and 4 PM on weekdays. Confirm times, destination, filesystem access and notification behavior before it saves schedules. Installation alone does not schedule anything.
+- **Morning:** a short reminder of your goals, what changed, and up to three realistic next actions.
+- **Afternoon:** what moved, anything new you committed to, and what felt energizing or draining.
+- **Friday:** a look at income, workload, opportunities and next week's priorities.
 
-- Morning: a two-minute brief, up to three realistic actions and one useful boundary.
-- Afternoon: progress, commitments, workload and energy; silence is unknown, not failure.
-- Friday afternoon: weekly review instead of a second review.
-- Weekends: opt in; keep them lighter.
+You can choose different times, include lighter weekend check-ins, or use the coach only when you ask. Missing a check-in isn't a failure and shouldn't produce a pile of catch-up assignments.
 
-See [scheduling and ready-to-use prompts](skills/independent-work-coach/references/scheduling.md). Codex and Claude use their own scheduling systems; this package does not claim a shared scheduler. Do not use both against the same notes at the same time. Pick one scheduled writer, even if you use both clients interactively.
+**Installing the skill does not turn on reminders.** Your assistant must set them up separately using the scheduling features available in your app and confirm they were saved. For check-ins that use local notes, your computer needs to be on; app-running requirements depend on the scheduler. Claude Code's `/loop` is not the recommended durable twice-daily setup.
 
-## Trust and limits
+See the [scheduling guide](skills/consulting-portfolio-coach/references/scheduling.md) for prompts and app-specific details. If you use both apps, choose just one to run scheduled check-ins so they don't write to your notes at the same time.
 
-This is coaching support, not legal, tax, investment or mental-health advice. Confirm important facts with appropriate professionals. Rates and earnings are not guaranteed. User-defined boundaries override generic advice: unpaid work is not categorically forbidden, but its cost should be explicit.
+## Your notes and privacy
 
-Only reusable instructions, blank templates and fictional evaluations belong in this repository. Do not commit real leads, contact exports, emails, resumes, account identities or personal state. Review what your selected model and connectors receive before granting access.
+Your notes stay separate from the shareable skill. They include your goals, work, leads, decisions and check-in history. Optional files track product experiments, research and events. No personal information is included with this project.
 
-## Validate
+You can use the coach without account connections. If you choose to add email or documents later, start with relevant read-only access and confirm the correct account. The coach should not send messages, edit external records, buy anything or make commitments without your explicit approval.
+
+The private-folder setup restricts file access on systems that support it and helps prevent accidentally adding notes to Git. **It is not encryption or a backup.** Your AI provider may still process information you ask the assistant to read; local storage does not mean offline AI. Check your provider's data settings before sharing sensitive material.
+
+Never put passwords, API keys, client correspondence or your personal notes in this repository. This is coaching support, not legal, tax, investment or mental-health advice, and it cannot guarantee income.
+
+## For people who want to customize it
+
+Both apps use the same `SKILL.md` and supporting files. The installer copies them to:
+
+| App | Personal skill folder |
+| --- | --- |
+| Codex | `~/.agents/skills/consulting-portfolio-coach/` |
+| Claude Code | `~/.claude/skills/consulting-portfolio-coach/` |
+
+You can copy `skills/consulting-portfolio-coach/` there manually instead. Personal Claude Code installation does not automatically install the skill in Claude web, Cowork or cloud tasks.
+
+To update an installation, back up the existing skill folder, remove that installed copy and reinstall. Leave your private notes alone. If you installed this project's previous name, `independent-work-coach`, back up and remove that old installed copy too so both versions don't appear. Review any existing task paths before switching; this rename does not migrate schedules. An unrelated skill with the same name will not be overwritten by the installer.
+
+To check a change:
 
 ```sh
 python3 -m unittest discover -s tests -v
 python3 scripts/check_package.py
 ```
 
-These checks validate packaging and setup safety, not coaching quality. Run the [fictional behavior evaluations](evals/scenarios.md) manually in either agent before distributing changes. No live accounts are needed for those tests.
+These tests check packaging and setup safety, not whether the coaching is useful. The [fictional evaluation scenarios](evals/scenarios.md) help you test behavior in either app without using real personal information.
 
-## Sources
+## Documentation and license
 
-Installation and scheduling guidance checked October 30, 2026:
+Setup guidance checked October 30, 2026: [Codex skills](https://learn.chatgpt.com/docs/build-skills), [Codex scheduling](https://learn.chatgpt.com/docs/automations?surface=app), [Claude Code skills](https://code.claude.com/docs/en/skills), and [Claude Code scheduling](https://code.claude.com/docs/en/scheduled-tasks).
 
-- [OpenAI skills](https://learn.chatgpt.com/docs/build-skills)
-- [OpenAI scheduled tasks](https://learn.chatgpt.com/docs/automations?surface=app)
-- [Claude Code skills](https://code.claude.com/docs/en/skills)
-- [Claude Code scheduling options](https://code.claude.com/docs/en/scheduled-tasks)
-
-## License
-
-MIT. See LICENSE. No private coaching records are included.
+MIT license. See [LICENSE](LICENSE).
