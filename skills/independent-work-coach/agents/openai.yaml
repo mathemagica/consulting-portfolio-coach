@@ -1,0 +1,6 @@
+interface:
+  display_name: "Independent Work Coach"
+  short_description: "Build a sustainable portfolio of independent work"
+  default_prompt: "Use $independent-work-coach to help me choose my next portfolio action."
+policy:
+  allow_implicit_invocation: true
